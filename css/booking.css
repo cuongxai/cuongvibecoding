@@ -1,0 +1,259 @@
+/* =========================================================
+   Lil'Sago — Trang Đặt bàn (mô phỏng widget iPOS)
+   ========================================================= */
+:root {
+  --red: #7a1f2b;
+  --red-dark: #5e161f;
+  --red-deep: #3f0e15;
+  --gold: #c9a227;
+  --gold-light: #e6c352;
+  --gold-dark: #a5831c;
+  --cream: #f7eedf;
+  --ink: #2b2420;
+  --muted: #6f625a;
+  --line: #e4d9c6;
+  --font: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); color: var(--ink); min-height: 100vh; }
+
+/* ----- Nền tối kiểu ẩm thực (thay bằng ảnh thật nếu có) ----- */
+.bg {
+  position: fixed; inset: 0; z-index: -2;
+  background:
+    radial-gradient(900px 500px at 15% 20%, rgba(122, 31, 43, 0.55), transparent 60%),
+    radial-gradient(700px 500px at 85% 80%, rgba(201, 162, 39, 0.25), transparent 60%),
+    linear-gradient(135deg, #1c1512, #2b201b 55%, #17110e);
+  /* Thả ảnh nền tối vào assets/img/bg-food.jpg là tự đổi (gradient là fallback) */
+  background-image:
+    radial-gradient(900px 500px at 15% 20%, rgba(122, 31, 43, 0.55), transparent 60%),
+    linear-gradient(135deg, rgba(20,15,13,0.82), rgba(23,17,14,0.9)),
+    url("../assets/img/bg-food.jpg");
+  background-size: cover; background-position: center;
+}
+
+/* Logo thật */
+.promo-banner__logo { min-height: 46px; display: flex; justify-content: center; align-items: center; margin-bottom: 6px; }
+.brand-logo { height: 78px; width: auto; display: block; }
+.promo-banner__logo-fb { display: none; flex-direction: column; align-items: center; line-height: 1; font-weight: 900; font-size: 26px; color: var(--gold-light); }
+.promo-banner__logo-fb small { font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 600; }
+.promo-banner__sub { margin-top: 10px; font-size: 13.5px; color: rgba(255,255,255,0.85); }
+.bg__overlay { position: fixed; inset: 0; z-index: -1; background: rgba(0,0,0,0.35); }
+
+.back-home {
+  position: fixed; top: 18px; left: 18px; z-index: 10;
+  color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+  background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.25);
+  padding: 8px 14px; border-radius: 999px; backdrop-filter: blur(6px);
+  transition: background 0.2s ease;
+}
+.back-home:hover { background: rgba(0,0,0,0.55); }
+
+/* ----- Layout ----- */
+.bpage { min-height: 100vh; display: grid; place-items: center; padding: 60px 20px; }
+.bmodal {
+  width: 100%; max-width: 1160px;
+  display: grid; grid-template-columns: 1fr 1.05fr;
+  background: #fff; border-radius: 22px; overflow: hidden;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.5);
+}
+
+/* ============ PANEL TRÁI ============ */
+.bm-left {
+  position: relative;
+  padding: 28px 26px 26px;
+  color: #fff;
+  background:
+    radial-gradient(600px 400px at 50% 0%, rgba(201,162,39,0.28), transparent 60%),
+    linear-gradient(160deg, var(--red-deep), #1d0d0f 90%);
+  display: flex; flex-direction: column; align-items: center;
+}
+
+.promo-banner { text-align: center; margin-bottom: 8px; }
+.promo-banner__logo {
+  font-weight: 900; font-size: 26px; letter-spacing: 0.5px;
+  color: var(--gold-light);
+  display: flex; flex-direction: column; align-items: center; line-height: 1;
+}
+.promo-banner__logo span { font-size: 10px; letter-spacing: 4px; color: rgba(255,255,255,0.6); margin-top: 4px; font-weight: 600; }
+.promo-banner__title { font-size: 22px; font-weight: 800; margin: 12px 0 8px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+.promo-banner__badge {
+  display: inline-block; background: var(--gold); color: var(--red-deep);
+  font-weight: 800; padding: 4px 14px; border-radius: 999px; font-size: 15px;
+}
+.promo-banner__price { margin-top: 12px; display: flex; gap: 12px; align-items: baseline; justify-content: center; }
+.promo-banner__price .old { text-decoration: line-through; opacity: 0.6; font-size: 15px; }
+.promo-banner__price .new { font-size: 30px; font-weight: 900; color: var(--gold-light); }
+
+/* ----- Vòng quay ----- */
+.wheel-wrap { position: relative; width: 340px; height: 340px; margin: 14px 0 6px; }
+.wheel-frame { position: absolute; inset: 0; z-index: 0; filter: drop-shadow(0 16px 30px rgba(0,0,0,0.55)); }
+.wheel-frame svg { width: 100%; height: 100%; display: block; }
+.wheel {
+  position: absolute; inset: 8%; z-index: 1; border-radius: 50%;
+  transition: transform 4.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+}
+.wheel svg { display: block; width: 100%; height: 100%; border-radius: 50%; }
+/* Khi dùng ảnh thật (wheel-disc.png) — viền + bóng nhẹ để hoà với khung ngoài */
+.wheel--photo { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.5), 0 2px 10px rgba(0,0,0,0.35); }
+
+/* Bóng đèn: idle mờ nhẹ, is-lit thì sáng rực (JS toggle class .is-lit trên .bulb) */
+.bulb { opacity: 0.55; transition: opacity 0.12s ease, filter 0.12s ease; }
+.bulb.is-lit { opacity: 1; filter: drop-shadow(0 0 5px #ffe9a8) brightness(1.3); }
+.bulb-glow, .bulb-spark { opacity: 0.35; }
+.wheel-pointer {
+  position: absolute; top: 2px; left: 50%; z-index: 4;
+  width: 30px; height: 30px;
+  transform: translateX(-50%) rotate(45deg);
+  background: linear-gradient(135deg, #ffe9a8, #a5831c);
+  border: 3px solid #fff; border-radius: 50% 50% 50% 3px;
+  box-shadow: 0 4px 9px rgba(0,0,0,0.55);
+}
+.wheel-pointer {
+  width: 34px; height: 34px;
+}
+.wheel-pointer::after {
+  content: ""; position: absolute; top: 50%; left: 50%;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fffdf3, #e6c352);
+  box-shadow: inset 0 -1px 2px rgba(120,90,20,0.5);
+  transform: translate(-50%, -50%);
+}
+.wheel-hub {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 88px; height: 88px; border-radius: 50%; z-index: 3;
+  background: radial-gradient(circle at 38% 30%, #fff6d3 0%, #eccb62 35%, #c9a227 60%, #9c7418 85%, #7a5a12 100%);
+  border: 4px solid #fdf4d6;
+  color: #6b3410; font-weight: 900; font-size: 14px; letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.5), inset 0 -4px 9px rgba(90,60,10,0.55), inset 0 4px 8px rgba(255,255,255,0.75);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  transition: transform 0.15s ease;
+}
+.wheel-hub::before {
+  content: ""; position: absolute; inset: 8px; border-radius: 50%;
+  border: 2px solid rgba(122,90,18,0.4); pointer-events: none;
+}
+.wheel-hub span { position: relative; z-index: 1; }
+.wheel-hub:hover { transform: translate(-50%, -50%) scale(1.05); }
+.wheel-hub:disabled { cursor: not-allowed; }
+.wheel-caption { font-size: 13px; opacity: 0.85; text-align: center; margin-top: 6px; }
+.wheel-result {
+  margin-top: 8px; text-align: center; font-weight: 800; font-size: 15px;
+  color: var(--red-deep); background: var(--gold-light);
+  padding: 8px 16px; border-radius: 999px;
+}
+
+/* ----- Thẻ nhà hàng ----- */
+.bm-restaurant {
+  margin-top: auto; width: 100%;
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px; padding: 14px 16px;
+}
+.bm-restaurant__logo {
+  width: 46px; height: 46px; flex: 0 0 46px; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 900; color: var(--red-deep);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+.bm-restaurant__info h3 { font-size: 15px; margin-bottom: 3px; }
+.bm-restaurant__info p { font-size: 12.5px; opacity: 0.8; line-height: 1.4; }
+
+/* ============ PANEL PHẢI (FORM) ============ */
+.bm-right { padding: 34px 34px 30px; display: flex; flex-direction: column; }
+.bm-right__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.bm-right__head h1 { font-size: 28px; font-weight: 800; color: var(--ink); }
+
+.lang-toggle { display: flex; gap: 6px; }
+.lang {
+  border: 1px solid var(--line); background: #fff; color: var(--muted);
+  padding: 6px 10px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: 0.2s;
+}
+.lang.is-active { border-color: var(--red); color: var(--red); background: var(--cream); }
+
+.brow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.brow--3 { grid-template-columns: 1fr 1fr 1fr; }
+.bfield { display: flex; flex-direction: column; gap: 6px; }
+.blabel { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: none; }
+
+.bfield input, .bselect select {
+  width: 100%; padding: 13px 14px;
+  border: 1.5px solid var(--line); border-radius: 12px;
+  font-family: inherit; font-size: 15px; color: var(--ink); background: #fff;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+.bfield input::placeholder { color: #b3a99c; }
+.bfield input:focus, .bselect select:focus {
+  outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,0.22);
+}
+.bfield input.is-invalid { border-color: var(--red); box-shadow: 0 0 0 3px rgba(122,31,43,0.18); }
+.bselect { position: relative; }
+.bselect select { appearance: none; -webkit-appearance: none; padding-right: 34px; cursor: pointer; }
+.bselect::after {
+  content: "⌄"; position: absolute; right: 14px; top: 46%; transform: translateY(-50%);
+  color: var(--muted); font-size: 18px; pointer-events: none;
+}
+
+.slots-title { font-size: 12px; font-weight: 800; color: var(--muted); letter-spacing: 1px; margin: 18px 0 12px; }
+.slots {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+  max-height: 250px; overflow-y: auto; padding-right: 4px;
+}
+.slot {
+  border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+  padding: 10px 0; border-radius: 10px; font-size: 14px; font-weight: 600;
+  cursor: pointer; text-align: center; transition: 0.15s;
+}
+.slot:hover { border-color: var(--gold); color: var(--red); }
+.slot.is-active { background: var(--red); border-color: var(--red); color: #fff; }
+.slot.is-past { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+
+.btn-book {
+  margin-top: 20px; width: 100%;
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: #fff; border: 0; padding: 15px; border-radius: 12px;
+  font-size: 16px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px;
+  box-shadow: 0 10px 24px rgba(122,31,43,0.35); transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.btn-book:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(122,31,43,0.45); }
+.btn-book:disabled { opacity: 0.7; cursor: progress; transform: none; }
+
+.book-msg { margin-top: 14px; text-align: center; font-weight: 700; color: #1e7a3f; }
+.book-msg.is-error { color: var(--red); }
+
+/* ===== Pháo hoa khi trúng thưởng ===== */
+.fireworks-layer { position: fixed; inset: 0; z-index: 999; pointer-events: none; overflow: hidden; }
+.fw-particle {
+  position: absolute; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--fw-color, #ffd76a);
+  box-shadow: 0 0 10px 2px var(--fw-color, #ffd76a);
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1);
+  opacity: 1;
+  animation: fw-burst 0.95s ease-out forwards;
+}
+@keyframes fw-burst {
+  0%   { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1); opacity: 1; }
+  70%  { opacity: 1; }
+  100% { transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--dist)) scale(0.15); opacity: 0; }
+}
+
+/* Scrollbar cho lưới giờ */
+.slots::-webkit-scrollbar { width: 8px; }
+.slots::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .bmodal { grid-template-columns: 1fr; max-width: 560px; }
+  .bm-left { padding-bottom: 30px; }
+}
+@media (max-width: 560px) {
+  .bpage { padding: 20px 12px; }
+  .bm-right { padding: 24px 20px; }
+  .brow, .brow--3 { grid-template-columns: 1fr; }
+  .slots { grid-template-columns: repeat(4, 1fr); }
+  .bm-right__head h1 { font-size: 24px; }
+  .wheel-wrap { width: 300px; height: 300px; }
+}

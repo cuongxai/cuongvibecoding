@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Đặt bàn Lil'Sago · Hotpot & More — 299 Võ Văn Tần, Quận 3, TP.HCM. Chọn khung giờ, số khách và quay vòng quay may mắn nhận ưu đãi." />
+  <title>Đặt bàn — Lil'Sago · Hotpot &amp; More</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/booking.css?v=2" />
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="bg__overlay"></div>
+
+  <a href="index.html" class="back-home" aria-label="Về trang chủ">← Trang chủ</a>
+
+  <main class="bpage">
+    <section class="bmodal" data-i18n-scope>
+      <!-- ============ PANEL TRÁI: ƯU ĐÃI + VÒNG QUAY ============ -->
+      <div class="bm-left">
+        <div class="promo-banner">
+          <div class="promo-banner__logo">
+            <img src="assets/img/logo.png?v=3" alt="Lil'Sago" class="brand-logo"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <span class="promo-banner__logo-fb">Lil'Sago<small>SINCE 2015</small></span>
+          </div>
+          <h2 class="promo-banner__title" data-i18n="promoTitle">VÒNG QUAY MAY MẮN</h2>
+          <div class="promo-banner__badge" data-i18n="promoBadge">100% trúng thưởng</div>
+          <p class="promo-banner__sub" data-i18n="promoSub">Hoá đơn từ 399K — nhận ngay 1 lượt quay</p>
+        </div>
+
+        <div class="wheel-wrap">
+          <div class="wheel-frame" id="wheelFrame" aria-hidden="true"><!-- khung + bóng đèn (tĩnh) --></div>
+          <div class="wheel" id="wheel"><!-- SVG bánh xe (quay) --></div>
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <button class="wheel-hub" id="spinBtn" aria-label="Quay">
+            <span data-i18n="spin">QUAY</span>
+          </button>
+        </div>
+        <p class="wheel-caption" data-i18n="wheelCaption">🎡 Vòng quay điều kỳ — đặt bàn để nhận lượt quay</p>
+        <p class="wheel-result" id="wheelResult" hidden></p>
+
+        <div class="bm-restaurant">
+          <div class="bm-restaurant__logo">LS</div>
+          <div class="bm-restaurant__info">
+            <h3>Lil'Sago — 299 Võ Văn Tần</h3>
+            <p>299 Võ Văn Tần, Phường 05, Quận 03, Hồ Chí Minh, Việt Nam</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PANEL PHẢI: FORM ============ -->
+      <div class="bm-right">
+        <div class="bm-right__head">
+          <h1 data-i18n="bookTitle">Đặt bàn</h1>
+          <div class="lang-toggle" id="langToggle">
+            <button class="lang is-active" data-lang="vi">🇻🇳 VI</button>
+            <button class="lang" data-lang="en">🇬🇧 EN</button>
+          </div>
+        </div>
+
+        <form id="bookForm" novalidate>
+          <div class="brow">
+            <div class="bfield">
+              <input type="text" id="fName" name="name" placeholder="Nhập tên của bạn" data-i18n-ph="phName" required />
+            </div>
+            <div class="bfield">
+              <input type="tel" id="fPhone" name="phone" placeholder="Số điện thoại" data-i18n-ph="phPhone" required />
+            </div>
+          </div>
+
+          <div class="bfield">
+            <label class="blabel" data-i18n="lblRestaurant">Chọn nhà hàng</label>
+            <div class="bselect">
+              <select id="fRestaurant" name="restaurant">
+                <option>LIL'SAGO - 299 VÕ VĂN TẦN</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="brow brow--3">
+            <div class="bfield">
+              <label class="blabel" data-i18n="lblDate">Ngày đặt</label>
+              <input type="date" id="fDate" name="date" />
+            </div>
+            <div class="bfield">
+              <label class="blabel" data-i18n="lblTime">Khung giờ</label>
+              <input type="text" id="fTime" name="time" placeholder="Khung giờ đặt" data-i18n-ph="phTime" readonly />
+            </div>
+            <div class="bfield">
+              <label class="blabel" data-i18n="lblGuests">Số khách</label>
+              <div class="bselect">
+                <select id="fGuests" name="guests"><!-- options by JS --></select>
+              </div>
+            </div>
+          </div>
+
+          <p class="slots-title" data-i18n="slotsTitle">KHUNG GIỜ</p>
+          <div class="slots" id="slots"><!-- time slots by JS --></div>
+
+          <button type="submit" class="btn-book" id="submitBtn" data-i18n="submit">ĐẶT BÀN NGAY</button>
+          <p class="book-msg" id="bookMsg" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="fireworks-layer" id="fireworksLayer" aria-hidden="true"></div>
+
+  <script src="js/booking.js?v=3"></script>
+</body>
+</html>
