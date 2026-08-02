@@ -7,34 +7,34 @@
   /* ----- 6 vị lẩu đặc trưng (theo bộ nhận diện thương hiệu) -----
      Thêm ảnh thật: điền field `img` với đường dẫn assets/img/vi-<ten>.jpg ----- */
   const FLAVORS = [
-    { icon: "🥬", name: "Kim chi", role: "Quen thuộc, dễ chọn", group: "Khách trẻ, người mới thử", img: "assets/img/vi-kimchi.jpg" },
-    { icon: "🌶️", name: "Chua cay", role: "Cân bằng, phổ thông", group: "Nhóm đông khó thống nhất", img: "assets/img/vi-chua-cay.jpg" },
-    { icon: "🍶", name: "Trường Thọ", role: "Dịu, có câu chuyện sữa hạnh nhân", group: "Gia đình, người thích vị nhẹ", img: "assets/img/vi-truong-tho.jpg" },
-    { icon: "🔥", name: "Tứ Xuyên", role: "Đậm, cay, kích thích vị giác", group: "Nhóm trẻ, người mê cay", img: "assets/img/vi-tu-xuyen.jpg" },
-    { icon: "🍋", name: "Tomyum", role: "Chua cay thơm, dễ nhận biết", group: "Nhóm bạn, khách thích vị Thái", img: "assets/img/vi-tomyum.jpg" },
-    { icon: "🎋", name: "Măng chua", role: "Vị Việt, dễ ăn", group: "Gia đình, khẩu vị truyền thống", img: "assets/img/vi-mang-chua.jpg" }
+    { icon: "🥬", name: "Kim chi Hải Sản", role: "Quen thuộc, dễ chọn — vị Hàn Quốc chuẩn cay chua", group: "Khách trẻ, người mới thử", price: "299.000đ", img: "assets/img/vi-kimchi.jpg" },
+    { icon: "🌶️", name: "Hải Sản Chua Cay", role: "Cân bằng, phổ thông — tôm, mực, cá viên trong nước chua cay nóng hổi", group: "Nhóm đông khó thống nhất", price: "299.000đ", img: "assets/img/vi-chua-cay.jpg" },
+    { icon: "🍶", name: "Sữa Trường Thọ Hải Sản", role: "Nấu từ sữa hạnh nhân, béo nhẹ không ngấy", group: "Gia đình, người thích vị nhẹ", price: "299.000đ", img: "assets/img/vi-truong-tho.jpg" },
+    { icon: "🔥", name: "Uyên Ương (2 vị)", role: "Nồi đôi — thích gì chọn nấy, không ai phải nhường ai", group: "Nhóm trẻ, người mê cay", price: "299.000đ", img: "assets/img/vi-tu-xuyen.jpg" },
+    { icon: "🍋", name: "Tomyum Hải Sản", role: "Chua cay kiểu Thái, thơm sả ớt", group: "Nhóm bạn, khách thích vị Thái", price: "299.000đ", img: "assets/img/vi-tomyum.jpg" },
+    { icon: "🎋", name: "Măng Chua Cá Hú", role: "Vị miền Tây, măng chua thanh mát, cá hú béo mềm", group: "Gia đình, khẩu vị truyền thống", price: "299.000đ", img: "assets/img/vi-mang-chua.jpg" }
   ];
 
   /* ----- Món thả lẩu (thay giá/ảnh thật của bạn vào đây) ----- */
   const DISHES = [
-    { cat: "beef",    icon: "🥩", name: "Bò Mỹ thái lát", desc: "Vân mỡ đẹp, mềm — phần bò hero để chụp ảnh.", price: "—", img: "assets/img/bo-my.jpg" },
-    { cat: "beef",    icon: "🐄", name: "Ba chỉ bò cuộn", desc: "Cuộn tay, nhúng là chín, béo vừa.", price: "—", img: "assets/img/ba-chi-bo.jpg" },
-    { cat: "beef",    icon: "🌋", name: "Bò núi lửa", desc: "Xếp hình núi, vân mỡ cực đẹp.", price: "—", img: "assets/img/bo-nui-lua.jpg" },
-    { cat: "beef",    icon: "❄️", name: "Bò hoa tuyết", desc: "Vân tuyết mềm tan, xếp trên đá lạnh.", price: "—", img: "assets/img/bo-hoa-tuyet.jpg" },
-    { cat: "beef",    icon: "☯️", name: "Bò sả ớt âm dương", desc: "Đĩa đôi sả ớt xanh - đỏ, thơm nồng.", price: "—", img: "assets/img/bo-sa-te.jpg" },
-    { cat: "beef",    icon: "🌶️", name: "Sốt sa tế Tứ Xuyên", desc: "Sa tế cay tê kiểu Tứ Xuyên, chấm là mê.", price: "—", img: "assets/img/lau-tu-xuyen.jpg" },
-    { cat: "seafood", icon: "🦐", name: "Tôm tươi", desc: "Chắc thịt, ngọt tự nhiên.", price: "—", img: "assets/img/mon-tom.jpg" },
-    { cat: "seafood", icon: "🦑", name: "Mực ống", desc: "Giòn sần sật, tươi mỗi ngày.", price: "—", img: "assets/img/mon-muc.jpg" },
-    { cat: "seafood", icon: "🐟", name: "Cá viên / chả cá", desc: "Dai ngon, thấm nước lẩu.", price: "—", img: "assets/img/mon-ca-vien.jpg" },
-    { cat: "seafood", icon: "🦪", name: "Nghêu sạch", desc: "Ngọt nước, đậm vị biển.", price: "—", img: "assets/img/mon-ngheu.jpg" },
-    { cat: "veg",     icon: "🥬", name: "Rau cải các loại", desc: "Giòn ngọt, giải ngán.", price: "—", img: "assets/img/mon-rau.jpg" },
-    { cat: "veg",     icon: "🍄", name: "Nấm kim châm", desc: "Giòn, thấm nước lẩu.", price: "—", img: "assets/img/mon-nam.jpg" },
-    { cat: "veg",     icon: "🌽", name: "Bắp ngọt", desc: "Ngọt thanh, hợp mọi vị lẩu.", price: "—", img: "assets/img/mon-bap.jpg" },
-    { cat: "veg",     icon: "🍢", name: "Đậu hũ &amp; nấm", desc: "Mềm béo, thấm vị.", price: "—", img: "assets/img/mon-dau-hu.jpg" },
-    { cat: "more",    icon: "🍚", name: "Cơm chiên", desc: "Món 'more' của Lil'Sago, ăn kèm lẩu.", price: "—", img: "assets/img/mon-com-chien.jpg" },
-    { cat: "more",    icon: "🍜", name: "Mì / bún thả lẩu", desc: "No đủ cho cả nhóm.", price: "—", img: "assets/img/mon-mi.jpg" },
-    { cat: "more",    icon: "🥟", name: "Viên thả lẩu", desc: "Đa dạng, dễ ăn.", price: "—", img: "assets/img/mon-vien-tha-lau.jpg" },
-    { cat: "more",    icon: "🧊", name: "Nước &amp; tráng miệng", desc: "Giải nhiệt sau nồi lẩu nóng.", price: "—", img: "assets/img/mon-trang-mieng.jpg" }
+    { cat: "beef",    icon: "🥩", name: "Thịt Ba Chỉ Bò Mỹ", desc: "Thịt cắt mỏng, xen kẽ mỡ nạc đều đặn — nhúng vài giây là mềm tan, béo nhẹ đầu lưỡi.", price: "79.000đ", img: "assets/img/bo-my.jpg" },
+    { cat: "beef",    icon: "🎍", name: "Bò Quết Ống Tre", desc: "Thịt bò xay nhuyễn, quết mịn và nhồi sẵn trong ống tre — thơm mùi bò rõ vị.", price: "49.000đ", img: "assets/img/ba-chi-bo.jpg" },
+    { cat: "beef",    icon: "🌋", name: "Thịt Bò Núi Lửa", desc: "Cay vừa, thơm mùi ớt — miếng bò đỏ au hấp dẫn nhìn muốn gắp liền tay.", price: "99.000đ", img: "assets/img/bo-nui-lua.jpg" },
+    { cat: "beef",    icon: "❄️", name: "Thịt Bò Hoa Tuyết", desc: "Vân mỡ hoa tuyết xen kẽ giúp thịt tan nhẹ khi nhúng, thơm béo nhưng không ngấy.", price: "99.000đ", img: "assets/img/bo-hoa-tuyet.jpg" },
+    { cat: "beef",    icon: "☯️", name: "Thịt Bò Thái Cực Cay 2 Vị", desc: "Mỗi bên một vị cay khác nhau: ớt đỏ tỏi bằm và ớt xanh thơm hăng — thả vào lẩu là \"bung lửa\".", price: "109.000đ", img: "assets/img/bo-sa-te.jpg" },
+    { cat: "beef",    icon: "🥩", name: "Thăn Bò Thượng Hạng Aukobe", desc: "Dòng bò cao cấp vân mỡ đẹp, mềm mọng, thơm béo tinh tế — ngon nhất khi nhúng nhanh.", price: "119.000đ", img: "assets/img/lau-tu-xuyen.jpg" },
+    { cat: "seafood", icon: "🦐", name: "Set Tôm Tươi", desc: "Tôm tươi dễ gắp, dễ mê — nhúng lẩu là ngọt đậm đà.", price: "99.000đ", img: "assets/img/mon-tom.jpg" },
+    { cat: "seafood", icon: "🦑", name: "Set Tôm Mực", desc: "Combo tôm và mực tươi, giòn ngọt tự nhiên — hợp mọi loại nước lẩu.", price: "89.000đ", img: "assets/img/mon-muc.jpg" },
+    { cat: "seafood", icon: "🐚", name: "Bào Ngư (3 con)", desc: "3 em bào ngư xịn xò, trình bày sang chảnh như fine-dining.", price: "89.000đ", img: "assets/img/mon-ca-vien.jpg" },
+    { cat: "seafood", icon: "🍤", name: "Set Hải Sản Đủ Vị", desc: "Combo đủ đầy gồm tôm, mực, thịt bò, cá hồi và cá viên — món nhúng quốc dân.", price: "79.000đ", img: "assets/img/mon-ngheu.jpg" },
+    { cat: "veg",     icon: "🥬", name: "Cải Thảo Đà Lạt", desc: "Mềm ngọt tự nhiên, giúp làm ngọt nước lẩu và bổ sung chất xơ.", price: "35.000đ", img: "assets/img/mon-rau.jpg" },
+    { cat: "veg",     icon: "🍄", name: "Nấm Kim Châm", desc: "Sợi nấm trắng muốt, giòn nhẹ — thấm nước lẩu là bung vị ngọt tự nhiên.", price: "35.000đ", img: "assets/img/mon-nam.jpg" },
+    { cat: "veg",     icon: "🌽", name: "Bắp Mỹ", desc: "Ngọt thanh, hợp mọi vị lẩu.", price: "35.000đ", img: "assets/img/mon-bap.jpg" },
+    { cat: "veg",     icon: "🍢", name: "Đậu Hủ Non", desc: "Mềm béo, thấm vị — món chay thanh đạm cho mọi nồi lẩu.", price: "29.000đ", img: "assets/img/mon-dau-hu.jpg" },
+    { cat: "more",    icon: "🍚", name: "Cơm Chiên Hải Sản", desc: "Tôm, mực, hạt bắp, đậu Hà Lan xào cùng cơm hạt dài, thơm khói chảo.", price: "99.000đ", img: "assets/img/mon-com-chien.jpg" },
+    { cat: "more",    icon: "🍜", name: "Mì Trứng", desc: "Sợi mì trứng khô vàng ươm, dai nhẹ — nhúng lẩu ngấm nước dùng mà không bị bở.", price: "13.000đ" },
+    { cat: "more",    icon: "🥟", name: "Combo Viên Lẩu", desc: "Tổng hợp 7 loại viên lẩu handmade — đầy đặn và chất lượng.", price: "59.000đ", img: "assets/img/mon-vien-tha-lau.jpg" },
+    { cat: "more",    icon: "🍮", name: "Kem Sữa Ý Panna Cotta", desc: "Tráng miệng mềm mịn, thanh nhẹ — giải nhiệt sau nồi lẩu nóng.", price: "19.000đ" }
   ];
 
   /* ----- Địa chỉ nhà hàng (thông tin thật) ----- */
@@ -59,6 +59,7 @@
         <h3 class="flavor-card__name">${f.name}</h3>
         <p class="flavor-card__role">${f.role}</p>
         <span class="flavor-card__group">👥 ${f.group}</span>
+        ${f.price ? `<div class="flavor-card__price">${f.price} <small>/ nồi 2 người</small></div>` : ""}
       </article>`
     ).join("");
   }

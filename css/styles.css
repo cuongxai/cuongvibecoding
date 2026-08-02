@@ -241,6 +241,10 @@ img { max-width: 100%; display: block; }
   color: var(--gold-dark); background: var(--cream);
   padding: 6px 14px; border-radius: 999px;
 }
+.flavor-card__price {
+  margin-top: 14px; font-size: 20px; font-weight: 800; color: var(--red);
+}
+.flavor-card__price small { font-size: 12px; font-weight: 600; color: var(--muted); }
 
 /* ===== Groups (đi nhóm) ===== */
 .groups__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
