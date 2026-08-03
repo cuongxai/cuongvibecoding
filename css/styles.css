@@ -397,6 +397,29 @@ img { max-width: 100%; display: block; }
 .stat__num { font-size: 32px; font-weight: 900; color: var(--red); }
 .stat__label { font-size: 14px; color: var(--muted); }
 
+/* ===== Reviews / Testimonials ===== */
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.review-card {
+  background: #fff; border-radius: var(--radius); padding: 26px 24px;
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; gap: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.review-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.review-card__stars { color: var(--gold-dark); font-size: 18px; letter-spacing: 2px; }
+.review-card__text { color: var(--ink, #2a2a2a); font-size: 15px; line-height: 1.6; flex: 1; }
+.review-card__author { display: flex; align-items: center; gap: 12px; }
+.review-card__avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--red), var(--gold-dark));
+  color: #fff; font-weight: 800; font-size: 16px;
+  display: grid; place-items: center;
+}
+.review-card__name { display: block; font-weight: 700; font-size: 14.5px; }
+.review-card__meta { display: block; color: var(--muted); font-size: 12.5px; }
+.review-more { display: inline-block; margin-top: 28px; color: var(--gold-dark); font-weight: 700; }
+.review-more:hover { color: var(--red); }
+
 /* ===== Branches ===== */
 .branches { background: linear-gradient(180deg, var(--cream), #fff); }
 .branches__layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; align-items: stretch; }
@@ -518,6 +541,7 @@ img { max-width: 100%; display: block; }
   .menu__grid { grid-template-columns: repeat(3, 1fr); }
   .flavor-grid { grid-template-columns: repeat(2, 1fr); }
   .groups__grid { grid-template-columns: repeat(2, 1fr); }
+  .review-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -540,6 +564,7 @@ img { max-width: 100%; display: block; }
   .setmenu__grid { grid-template-columns: 1fr; }
   .menu__grid { grid-template-columns: repeat(2, 1fr); }
   .flavor-grid { grid-template-columns: 1fr; }
+  .review-grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .fab { display: none; }
 }

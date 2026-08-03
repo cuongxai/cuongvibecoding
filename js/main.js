@@ -49,6 +49,47 @@
     }
   ];
 
+  /* ----- Đánh giá thật của khách trên Google Maps (trích nguyên văn, không chỉnh sửa) ----- */
+  const TESTIMONIALS = [
+    {
+      name: "Manh Hung Tong",
+      meta: "5 bài đánh giá · 3 tuần trước",
+      stars: 5,
+      text: "Nước lẩu sữa béo vừa, thơm nhưng không ngấy, còn Mala cay tê đúng kiểu Tứ Xuyên nhưng không gắt cổ. Buffet quầy nước chấm nhiều lựa chọn, tự pha cũng khá vui."
+    },
+    {
+      name: "Pham Hang",
+      meta: "Local Guide · 6 bài đánh giá · 3 tháng trước",
+      stars: 5,
+      text: "Đồ ăn quán siêu ngon, vị lẩu ăn rất vừa khẩu vị tụi mình. Không gian rộng rãi, thoáng mát. Nhân viên quán siêu thân thiện, siêu cuteee. Lần đầu ăn ở quán mà thích quá tr lun 🥰"
+    },
+    {
+      name: "Cường Nguyễn Xuân",
+      meta: "Local Guide",
+      stars: 5,
+      text: "Bàn để khá sát nhau và mỗi bàn có ánh đèn vàng sáng rực nên cảm giác ngồi ăn khá ấm cúng. Vị chua chua cay cay kiểu Thái khá ngon, dễ ăn còn Tứ Xuyên thì hơi nồng và cay — ai thích ăn cay thì hợp. Hải sản đông lạnh nhưng nhìn vẫn còn khá tươi, rau cũng sạch."
+    }
+  ];
+
+  /* ----- Render đánh giá thật ----- */
+  const reviewGrid = document.getElementById("reviewGrid");
+  if (reviewGrid) {
+    reviewGrid.innerHTML = TESTIMONIALS.map(
+      (t) => `
+      <article class="review-card" data-reveal>
+        <div class="review-card__stars" aria-label="${t.stars} sao">${"★".repeat(t.stars)}${"☆".repeat(5 - t.stars)}</div>
+        <p class="review-card__text">"${t.text}"</p>
+        <div class="review-card__author">
+          <span class="review-card__avatar">${t.name.trim().charAt(0)}</span>
+          <div>
+            <span class="review-card__name">${t.name}</span>
+            <span class="review-card__meta">${t.meta}</span>
+          </div>
+        </div>
+      </article>`
+    ).join("");
+  }
+
   /* ----- Render 6 vị lẩu ----- */
   const menuGrid = document.getElementById("menuGrid");
   if (menuGrid) {
