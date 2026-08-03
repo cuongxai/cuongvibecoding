@@ -173,19 +173,6 @@
     });
   }
 
-  /* ----- Cookie banner ----- */
-  const cookie = document.getElementById("cookie");
-  const COOKIE_KEY = "lilsago_cookie_ok";
-  if (cookie && !localStorage.getItem(COOKIE_KEY)) {
-    setTimeout(() => (cookie.hidden = false), 800);
-  }
-  function dismissCookie(save) {
-    if (save) localStorage.setItem(COOKIE_KEY, "1");
-    if (cookie) cookie.hidden = true;
-  }
-  document.getElementById("cookieAccept")?.addEventListener("click", () => dismissCookie(true));
-  document.getElementById("cookieClose")?.addEventListener("click", () => dismissCookie(false));
-
   /* ----- Hiệu ứng reveal khi cuộn ----- */
   let io;
   function observeReveals() {
