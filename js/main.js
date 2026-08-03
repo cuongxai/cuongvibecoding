@@ -7,12 +7,12 @@
   /* ----- 6 vị lẩu đặc trưng (theo bộ nhận diện thương hiệu) -----
      Thêm ảnh thật: điền field `img` với đường dẫn assets/img/vi-<ten>.jpg ----- */
   const FLAVORS = [
-    { icon: "🥬", name: "Kim chi Hải Sản", role: "Quen thuộc, dễ chọn — vị Hàn Quốc chuẩn cay chua", group: "Khách trẻ, người mới thử", price: "299.000đ", img: "assets/img/vi-kimchi.jpg" },
-    { icon: "🌶️", name: "Hải Sản Chua Cay", role: "Cân bằng, phổ thông — tôm, mực, cá viên trong nước chua cay nóng hổi", group: "Nhóm đông khó thống nhất", price: "299.000đ", img: "assets/img/vi-chua-cay.jpg" },
-    { icon: "🍶", name: "Sữa Trường Thọ Hải Sản", role: "Nấu từ sữa hạnh nhân, béo nhẹ không ngấy", group: "Gia đình, người thích vị nhẹ", price: "299.000đ", img: "assets/img/vi-truong-tho.jpg" },
-    { icon: "🔥", name: "Uyên Ương (2 vị)", role: "Nồi đôi — thích gì chọn nấy, không ai phải nhường ai", group: "Nhóm trẻ, người mê cay", price: "299.000đ", img: "assets/img/vi-tu-xuyen.jpg" },
-    { icon: "🍋", name: "Tomyum Hải Sản", role: "Chua cay kiểu Thái, thơm sả ớt", group: "Nhóm bạn, khách thích vị Thái", price: "299.000đ", img: "assets/img/vi-tomyum.jpg" },
-    { icon: "🎋", name: "Măng Chua Cá Hú", role: "Vị miền Tây, măng chua thanh mát, cá hú béo mềm", group: "Gia đình, khẩu vị truyền thống", price: "299.000đ", img: "assets/img/vi-mang-chua.jpg" }
+    { icon: "🥬", name: "Kim Chi", role: "Quen thuộc, dễ chọn — vị Hàn Quốc chuẩn cay chua", group: "Khách trẻ, người mới thử", price: "299.000đ", img: "assets/img/vi-kimchi.jpg" },
+    { icon: "🌶️", name: "Thái Chua Cay", role: "Cân bằng, phổ thông — tôm, mực, cá viên trong nước chua cay nóng hổi", group: "Nhóm đông khó thống nhất", price: "299.000đ", img: "assets/img/vi-chua-cay.jpg" },
+    { icon: "🍶", name: "Trường Thọ", role: "Nấu từ sữa hạnh nhân, béo nhẹ không ngấy", group: "Gia đình, người thích vị nhẹ", price: "299.000đ", img: "assets/img/vi-truong-tho.jpg" },
+    { icon: "🔥", name: "Tứ Xuyên", role: "Đậm, cay, kích thích vị giác — nồi đôi 2 vị cho cả nhóm", group: "Nhóm trẻ, người mê cay", price: "299.000đ", img: "assets/img/vi-tu-xuyen.jpg" },
+    { icon: "🍋", name: "Thái Tomyum", role: "Chua cay kiểu Thái, thơm sả ớt", group: "Nhóm bạn, khách thích vị Thái", price: "299.000đ", img: "assets/img/vi-tomyum.jpg" },
+    { icon: "🎋", name: "Măng Chua", role: "Vị miền Tây, măng chua thanh mát, cá hú béo mềm", group: "Gia đình, khẩu vị truyền thống", price: "299.000đ", img: "assets/img/vi-mang-chua.jpg" }
   ];
 
   /* ----- Món thả lẩu (thay giá/ảnh thật của bạn vào đây) ----- */
