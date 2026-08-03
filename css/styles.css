@@ -529,6 +529,17 @@ img { max-width: 100%; display: block; }
 }
 .fab:hover { transform: scale(1.06); }
 
+.fab-chat {
+  position: fixed; right: 22px; bottom: 158px; z-index: 91;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: linear-gradient(135deg, #00c6ff, #0084ff);
+  display: grid; place-items: center;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.2s ease;
+}
+.fab-chat:hover { transform: scale(1.08); }
+.fab-chat svg { width: 30px; height: 30px; fill: #fff; }
+
 /* ===== Reveal animation ===== */
 [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
 [data-reveal].is-visible { opacity: 1; transform: none; }
@@ -567,6 +578,8 @@ img { max-width: 100%; display: block; }
   .review-grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .fab { display: none; }
+  .fab-chat { bottom: 24px; width: 52px; height: 52px; }
+  .fab-chat svg { width: 26px; height: 26px; }
 }
 
 @media (max-width: 560px) {
