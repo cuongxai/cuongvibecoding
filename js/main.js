@@ -59,7 +59,6 @@
         <h3 class="flavor-card__name">${f.name}</h3>
         <p class="flavor-card__role">${f.role}</p>
         <span class="flavor-card__group">👥 ${f.group}</span>
-        ${f.price ? `<div class="flavor-card__price">${f.price} <small>/ nồi 2 người</small></div>` : ""}
       </article>`
     ).join("");
   }
