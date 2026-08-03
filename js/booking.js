@@ -350,6 +350,7 @@
       form.reset(); setDefaultDate(); buildGuests();
       slotsEl.querySelectorAll(".slot").forEach((s) => s.classList.remove("is-active"));
       timeInput.value = "";
+      if (typeof window.trackBookingSuccess === "function") window.trackBookingSuccess(payload);
       return showMsg(dict.okDemo);
     }
     try {
@@ -362,6 +363,7 @@
       form.reset(); setDefaultDate(); buildGuests();
       slotsEl.querySelectorAll(".slot").forEach((s) => s.classList.remove("is-active"));
       timeInput.value = "";
+      if (typeof window.trackBookingSuccess === "function") window.trackBookingSuccess(payload);
       showMsg(dict.okReal);
     } catch (err) {
       console.error(err); showMsg(dict.fail, true);
