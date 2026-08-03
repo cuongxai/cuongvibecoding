@@ -149,7 +149,7 @@ img { max-width: 100%; display: block; }
     linear-gradient(120deg, var(--red-deep) 0%, var(--red-dark) 45%, var(--red) 100%);
   /* Ảnh nền: thả assets/img/hero.jpg (gradient rực rỡ bên dưới là fallback) */
   background-image:
-    linear-gradient(120deg, rgba(63,14,21,0.82), rgba(94,22,31,0.55)),
+    linear-gradient(120deg, rgba(63,14,21,0.5), rgba(94,22,31,0.18)),
     url("../assets/img/hero.jpg"),
     radial-gradient(1200px 600px at 70% 20%, rgba(232,182,74,0.35), transparent 60%),
     linear-gradient(120deg, var(--red-deep) 0%, var(--red-dark) 45%, var(--red) 100%);
@@ -158,7 +158,7 @@ img { max-width: 100%; display: block; }
 }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(0,0,0,0.35), transparent 55%);
+  background: radial-gradient(circle at 20% 80%, rgba(0,0,0,0.2), transparent 55%);
 }
 .hero__content { position: relative; z-index: 2; max-width: 640px; padding-top: var(--header-h); }
 .hero__eyebrow {
@@ -170,8 +170,8 @@ img { max-width: 100%; display: block; }
   color: var(--gold);
   margin-bottom: 18px;
 }
-.hero__title { font-size: clamp(40px, 6vw, 72px); font-weight: 900; line-height: 1.05; margin-bottom: 22px; }
-.hero__quote { font-size: clamp(18px, 2.4vw, 24px); font-style: italic; font-weight: 500; margin-bottom: 36px; opacity: 0.95; }
+.hero__title { font-size: clamp(40px, 6vw, 72px); font-weight: 900; line-height: 1.05; margin-bottom: 22px; text-shadow: 0 2px 16px rgba(0,0,0,0.45); }
+.hero__quote { font-size: clamp(18px, 2.4vw, 24px); font-style: italic; font-weight: 500; margin-bottom: 36px; opacity: 0.95; text-shadow: 0 2px 12px rgba(0,0,0,0.45); }
 .hero__cta { display: flex; gap: 16px; flex-wrap: wrap; }
 .hero__scroll {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
