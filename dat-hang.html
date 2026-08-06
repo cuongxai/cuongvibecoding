@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Đặt hàng online Lil'Sago · Hotpot & More — đặt món giao tận nơi qua iPOS." />
+<title>Đặt hàng online — Lil'Sago · Hotpot &amp; More</title>
+<link rel="icon" type="image/png" href="assets/img/logo.png?v=3" />
+<style>
+  html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+  body { background: #2b2420; }
+  iframe { width: 100%; height: 100%; border: none; display: block; }
+  .back-home {
+    position: fixed; top: 18px; left: 18px; z-index: 10;
+    display: inline-flex; align-items: center; gap: 6px;
+    color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+    font-family: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.25);
+    padding: 8px 14px; border-radius: 999px; backdrop-filter: blur(6px);
+    transition: background 0.2s ease;
+  }
+  .back-home:hover { background: rgba(0,0,0,0.65); }
+</style>
+</head>
+<body>
+<a href="index.html" class="back-home" aria-label="Về trang chủ">← Trang chủ</a>
+<iframe id="webOrderIframe" title="Đặt hàng online Lil'Sago" src="https://order.ipos.vn/?pos_parent=BRAND-SGK7"></iframe>
+<script>
+const iframe = document.getElementById('webOrderIframe');
+iframe.addEventListener('load', () => {
+  const message = {
+    type: "EMBED_DATA_SAVE",
+    payload: JSON.parse(localStorage.getItem('data_by_wo') || '{}')
+  };
+  iframe.contentWindow.postMessage(message, "*");
+  console.log('[SEND]', message);
+});
+window.addEventListener('message', (event) => {
+  const data = event.data;
+  if (!data || typeof data !== 'object') return;
+  if (data.type === 'WO_UPDATE_DATA' && data.payload) {
+    localStorage.setItem(
+      'data_by_wo',
+      JSON.stringify({
+        ...JSON.parse(localStorage.getItem('data_by_wo') || '{}'),
+        ...data.payload
+      })
+    );
+  }
+});
+</script>
+</body>
+</html>
