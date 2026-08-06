@@ -10,10 +10,9 @@ Nếu thiếu file nào, chỗ đó tự hiển thị icon/emoji dự phòng —
 
 Logo, hero, nền đặt bàn, ảnh giới thiệu, 3 set menu, banner vòng quay, 6 ảnh món bò,
 6 vị lẩu, toàn bộ món trong lưới thực đơn (kể cả Hải Sản Sốt Thái Nhiệt Đới và Sụn Gà
-Rang Muối Hong Kong lấy từ menu iPOS), ảnh mặt tiền 299 Võ Văn Tần.
-
-> Các ảnh `khong_gian (1..11).jpg` trong thư mục là ảnh không gian quán chưa được
-> gắn vào chỗ nào trên site — có thể dùng sau cho một khối gallery riêng nếu cần.
+Rang Muối Hong Kong lấy từ menu iPOS), ảnh mặt tiền 299 Võ Văn Tần, 11 ảnh
+`khong-gian-01.jpg` → `khong-gian-11.jpg` dùng cho khối "Không gian quán" (giữa mục
+11 năm và Đánh giá khách hàng).
 
 ## 🟡 CÒN THIẾU — Khác
 
