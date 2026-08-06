@@ -32,9 +32,9 @@
     { cat: "veg",     icon: "🌽", name: "Bắp Mỹ", desc: "Ngọt thanh, hợp mọi vị lẩu.", price: "35.000đ", img: "assets/img/mon-bap.jpg" },
     { cat: "veg",     icon: "🍢", name: "Đậu Hủ Non", desc: "Mềm béo, thấm vị — món chay thanh đạm cho mọi nồi lẩu.", price: "29.000đ", img: "assets/img/mon-dau-hu.jpg" },
     { cat: "more",    icon: "🍚", name: "Cơm Chiên Hải Sản", desc: "Tôm, mực, hạt bắp, đậu Hà Lan xào cùng cơm hạt dài, thơm khói chảo.", price: "99.000đ", img: "assets/img/mon-com-chien.jpg" },
-    { cat: "more",    icon: "🍜", name: "Mì Trứng", desc: "Sợi mì trứng khô vàng ươm, dai nhẹ — nhúng lẩu ngấm nước dùng mà không bị bở.", price: "13.000đ" },
+    { cat: "seafood", icon: "🐙", name: "Hải Sản Sốt Thái Nhiệt Đới", desc: "Món \"thần sầu gọi bia\" của Lil'Sago — hải sản tươi rói quyện sốt Thái chua cay mặn ngọt. Tôm + Bạch tuộc baby + Vẹm xanh New Zealand.", price: "199.000đ", img: "assets/img/mon-hai-san-thai.jpg" },
     { cat: "more",    icon: "🥟", name: "Combo Viên Lẩu", desc: "Tổng hợp 7 loại viên lẩu handmade — đầy đặn và chất lượng.", price: "59.000đ", img: "assets/img/mon-vien-tha-lau.jpg" },
-    { cat: "more",    icon: "🍮", name: "Kem Sữa Ý Panna Cotta", desc: "Tráng miệng mềm mịn, thanh nhẹ — giải nhiệt sau nồi lẩu nóng.", price: "19.000đ" }
+    { cat: "more",    icon: "🍗", name: "Sụn Gà Rang Muối Hong Kong", desc: "Sụn gà giòn rụm, rang muối ớt tiêu ăn vui miệng, càng nhai càng bùi.", price: "119.000đ", img: "assets/img/mon-sun-ga.jpg" }
   ];
 
   /* ----- Địa chỉ nhà hàng (thông tin thật) ----- */
