@@ -404,12 +404,12 @@ img { max-width: 100%; display: block; }
 .stat__label { font-size: 14px; color: var(--muted); }
 
 /* ===== Không gian quán ===== */
-.ambience-grid { columns: 4; column-gap: 16px; }
+.ambience-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .ambience-item {
-  display: block; break-inside: avoid; margin-bottom: 16px;
-  border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow);
+  display: block; aspect-ratio: 4 / 3; overflow: hidden;
+  border-radius: var(--radius-sm); box-shadow: var(--shadow);
 }
-.ambience-item img { width: 100%; display: block; transition: transform 0.35s ease; }
+.ambience-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease; }
 .ambience-item:hover img { transform: scale(1.05); }
 
 /* ===== Reviews / Testimonials ===== */
@@ -564,7 +564,7 @@ img { max-width: 100%; display: block; }
   .flavor-grid { grid-template-columns: repeat(2, 1fr); }
   .groups__grid { grid-template-columns: repeat(2, 1fr); }
   .review-grid { grid-template-columns: repeat(2, 1fr); }
-  .ambience-grid { columns: 3; }
+  .ambience-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 860px) {
@@ -588,7 +588,7 @@ img { max-width: 100%; display: block; }
   .menu__grid { grid-template-columns: repeat(2, 1fr); }
   .flavor-grid { grid-template-columns: 1fr; }
   .review-grid { grid-template-columns: 1fr; }
-  .ambience-grid { columns: 2; }
+  .ambience-grid { grid-template-columns: repeat(2, 1fr); }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .fab { display: none; }
   .header__actions .btn--order { display: none; }
