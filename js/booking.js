@@ -11,6 +11,25 @@
     BOOKING_ENDPOINT: "https://script.google.com/macros/s/AKfycbxs4mhXi7hf1vBOIEMNRhSl5tmQXrniEkeYZ11NDARD87uUDiVo-HHX1yKYvYnrFwupRg/exec"
   };
 
+  /* ----- FnB App (quản lý quán): gửi thêm 1 bản đơn thẳng vào app, song song Google Sheet.
+     Khoá "publishable" là khoá công khai — chỉ gọi được đúng 1 việc: gửi đơn đặt bàn.
+     Máy chủ tự kiểm tra SĐT/ngày/giờ/số khách, chặn quá 3 đơn/SĐT/ngày. ----- */
+  const FNB_APP = {
+    url: "https://iffcawkjsxtakbobmeih.supabase.co/rest/v1/rpc/submit_booking",
+    key: "sb_publishable_5Oo8M_L5yF_Esu8cDeW7Tw_d1MMyp6u",
+    tenant: "f84f3cb9-fc1e-4529-81a1-9f8bf8dfcb90"
+  };
+  function guiVaoApp(payload) {
+    // không chờ, không báo lỗi cho khách: Sheet vẫn là đường chính trong giai đoạn chạy song song
+    return fetch(FNB_APP.url, {
+      method: "POST", keepalive: true,
+      headers: { apikey: FNB_APP.key, "Content-Type": "application/json" },
+      body: JSON.stringify({ t: FNB_APP.tenant, p: payload })
+    }).catch(() => {});
+  }
+  // mã nguồn khách do analytics.js bắt từ link (?utm_source=tt|gm|fb|zalo|ref) và giữ suốt phiên
+  const TRACK = window.LILSAGO_TRACK || { source: "WEB", rawSource: "", campaign: "", landing: "" };
+
   /* ----- Phần thưởng vòng quay THẬT (theo poster "Vòng quay may mắn") -----
      Xen kẽ 2 màu đỏ rượu / kem cho giống thiết kế poster. ----- */
   const PRIZES = [
@@ -341,7 +360,11 @@
       time: form.elements["time"].value,
       guests: form.elements["guests"].value,
       prize: wonText.replace(dict.won, "").trim(),
-      source: "dat-ban.html",
+      source: TRACK.source,          // GM / FB / TT / ZALO / REF / SEO / WEB — kênh khách đến
+      sourceRaw: TRACK.rawSource,    // utm_source gốc
+      campaign: TRACK.campaign,      // utm_campaign — mẫu quảng cáo nào ra bàn
+      landing: TRACK.landing,        // trang khách vào đầu tiên trong phiên
+      page: "dat-ban.html",
       submittedAt: new Date().toISOString()
     };
 
@@ -355,6 +378,7 @@
     }
     try {
       btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = dict.sending;
+      guiVaoApp(payload);
       await fetch(CONFIG.BOOKING_ENDPOINT, {
         method: "POST", mode: "no-cors",
         headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
